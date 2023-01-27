@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a New Card | Yu-Gi-Oh! Fantasy Collection!</title>
+</head>
+<body>
+    <%- include('./partials/header') %> 
+    <h1>Add New Card</h1>
+    <form action="/yugioh" method="POST">
+    <label>
+        Card name
+        <input type="text" name="name" required/>
+    </label>
+    <label>
+        Booster Box
+        <input type="text" name="boxSet" required/>
+    </label>
+    <label>
+        Condition
+        <input type="text" name="condition" required/>
+    </label>
+    <label>
+        Card Description
+        <input type="text" name="cardDescription" required/>
+    </label>
+    <label>
+        Rarity
+        <input type="text" name="rarity"/>
+    </label>
+    <label>
+        Attribute/Monster Type/Card Type:
+        <input type="text" name="cardType"/>
+    </label>
+    <label>
+        Attack
+        <input type="text" name="attack"/>
+    </label>
+    <label>
+        Defense
+        <input type="text" name="defense"/>
+    </label>
+    <input type="submit" value="Create Card" />
+    </form>
+</body>
+<a href="/yugioh"> Return to Card Directory</a>
+</html>
