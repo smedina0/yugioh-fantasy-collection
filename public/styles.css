@@ -1,0 +1,150 @@
+/* Reset CSS */
+* {
+    box-sizing: border-box;
+}
+
+/* General */
+
+/* * Body  */
+
+/* - Background Colors and Overall Structure */
+.navyBlue{
+    background-color: #232946;
+    color:white;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+}
+
+.pink{
+    color:#eebbc3;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+/* Structure */
+
+.flexColumn{
+display: flex;
+flex-direction: column;
+justify-content: center;
+width:100%;
+}
+
+/* - Nav */
+nav{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    border-bottom: 1px solid white;
+    width: 100%;
+    padding: 25px;
+    font-size: 32px;
+}
+
+.left{
+justify-content: flex-start;
+}
+
+nav ul{
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+list-style-type: none;
+}
+
+nav ul li{
+    margin:0 20px 0 20px;
+}
+
+/* - Tile */
+.tile{
+    width: 415px;
+    height: 283px;
+    background-color:white;
+    list-style-type: none;
+    margin: 0 21.5px 43px 21.5px;
+    display:inline-block;
+    border-radius: 10px;
+}
+
+.tile p{
+    color: #232946;
+
+}
+
+.tileRow{
+display:flex;
+flex-direction: row;
+}
+
+.tileColumn{
+display: flex;
+flex-direction: column;
+}
+
+.tile img{
+width: 173px;
+height: 254px;
+margin: 10px;
+}
+
+.tileFlexColumn{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:flex-start;
+}
+
+.tileEm{
+    font-weight:700;
+}
+
+/* Links */
+
+a{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navyBlue a{
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.headingAndButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:0 20px 0 20px;
+    margin-bottom: 20px;
+}
+
+.buttonPink{
+border-radius: 4px;
+background:#EEBBC3;
+height:70px;
+margin-top: 30px;
+
+}
+
+a.buttonPink{
+    color:#232946;
+    font-weight:700;
+    font-size:26px;
+    padding: 19.2px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Headings */
+
+h1.topLeft{
+    padding:30px 0 30px 0;
+    font-weight: 700;
+    font-size: 40px;
+   
+}

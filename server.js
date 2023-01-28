@@ -10,6 +10,14 @@ const Card = require("./models/card.js");
 // Models
 const Book = require("./models/card.js")
 
+// File System Module
+const fs = require("fs");
+let rawData = fs.readFileSync("./models/card_info.json");
+const cardData = JSON.parse(rawData);
+// console.log(cardData.data[0]);
+
+// Seed Data
+const data = require('./data');
 
 // * Call Dependencies
 
@@ -36,6 +44,19 @@ app.use(express.urlencoded({
     extended: true
 }));
 
+// Middleware to allow CSS and JS
+app.use('/public', express.static('public'));
+
+
+// Seed Route
+
+app.get('/yugioh/seed', (req, res) => {
+// Card.deleteMany({}, (err, results)=>{
+Card.create(data, (err, results)=>{
+res.redirect('/yugioh');
+});
+});
+// });
 
 // * Mount Routes
 
@@ -44,6 +65,7 @@ app.get("/yugioh", (req, res) => {
     Card.find({}, (error, allCards) => {
         res.render("index.ejs", {
             cards: allCards,
+            cardData: cardData,
         });
     });
 });
@@ -80,6 +102,14 @@ app.get("/yugioh/:id", (req, res) => {
         });
     });
 });
+
+// app.get("/yugioh/:id"(req, res) = {
+//     User.findById(req.params.id, (err, foundUser) => {
+//         res.render("myCards.ejs", {
+//             user: foundUser,
+//         });
+//     });
+// });
 
 // * Set Up Listener
 const PORT = process.env.PORT;

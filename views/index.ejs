@@ -1,19 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('./partials/styles') %>
     <title>Card Directory | Yu-Gi-Oh! Fantasy Collection!</title>
 </head>
-<body>
-    <%- include('./partials/header') %> 
-    <h1>Featured Cards</h1>
-    <a href="/yugioh/new" class="button">Create New Card</a>
-    <ul>
-        <% cards.forEach(card => { %>
-            <li><a href="/yugioh/<%= card._id %> "><%= card.name; %></a></li> 
-        <% }); %> 
-    </ul>
+
+<body class="navyBlue">
+    <div class="flexColumn">
+        <%- include('./partials/header') %>
+
+        <div class="headingAndButton">
+            <h1 class="topLeft">Featured Cards</h1>
+            <a href="/yugioh/new" class="buttonPink">Create New Card</a>
+        </div>
+
+        <ul>
+            <% cards.forEach(card => { %>
+            <li class="tile"><a href="/yugioh/<%= card._id %> ">
+                <div class="tileRow">
+                    <div class="tileColumn">
+                    <img src="<%=card.img%>">
+                  
+                </div>
+               <div class="tileFlexColumn">
+                <p><i>Yu-Gi-Oh!</br><%= card.boxSet; %></i></p>
+                <p><%= card.rarity; %></br><span class="tileEm"><%= card.name; %></span></p>
+                <p>Market Price Placeholder</br><span>Price</span></p>
+                <p><%= cardData.data[0].name %> </p>
+                </div>
+            </div>
+                </a></li>
+            <% }); %>
+        </ul>
+
+<!-- Testing API Start -->
+
+<ul>
+    <% for(let i = 0; i < cardData.data.length; i++ ) { %>
+        <% for( let c = 0; c < cardData.data[0].length; c++ ) { %>
+        <li class="tile">
+            <div class="tileRow">
+                <div class="tileColumn">
+                <img src="<%=cardData.data[i].image_url%>">
+            </div>
+           <div class="tileFlexColumn">
+            <p><i>Yu-Gi-Oh!</br><%= cardData.data[i].card_sets[c].set_name[0]; %></i></p>
+            <p><%= cardData.data[i].card_sets[c].set_rarity; %></br><span class="tileEm"><%= cardData.data[i].name; %></span></p>
+            <p>Market Price</br><span><%= cardData.data[i].card_sets[c].set_price; %></span></p>
+            </div>
+        </div>
+        </li>
+        <% } %>
+    <% } %>
+</ul>
+
+<!-- Testing API END -->
+
+    </div>
 </body>
+
 </html>
