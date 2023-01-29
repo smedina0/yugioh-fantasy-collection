@@ -30,7 +30,7 @@
                             <p><i>Yu-Gi-Oh!</br><%= card.boxSet; %></i></p>
                             <p><%= card.rarity; %></br><span class="tileEm"><%= card.name; %></span></p>
                             <p>Market Price Placeholder</br><span>Price</span></p>
-                            <p><%= cardData.data[0].card_sets[0].set_name %> </p>
+                            <p><%= cardData[0].card_sets[0].set_name %> </p>
                         </div>
                     </div>
                 </a></li>
@@ -40,25 +40,31 @@
         <!-- Testing API Start -->
 
         <ul>
-            <% for(let i = 0; i < cardData.data.length; i++ ) { %>
+            <% for(let i = 0; i < cardData.length; i++ ) { %>
             
             <li class="tile">
                         
                 <div class="tileRow">
                     <div class="tileColumn">
-                            <img src="<%=cardData.data[i].card_images[1]%>">
-                        <% for( let c = 0; c < cardData.data[7].length; c++ ) { %>
-                    </div>
+                    
+                          
+                        </div>
+                       
+                    
                     <div class="tileFlexColumn">
-                        <p><i>Yu-Gi-Oh!</br><%= cardData.data[i].card_sets[c].set_name; %></i></p>
-                        <p><%= cardData.data[i].card_sets[c].set_rarity; %></br><span
-                                class="tileEm"><%= cardData.data[i].name; %></span></p>
-                        <p>Market Price</br><span><%= cardData.data[i].card_sets[c].set_price; %></span></p>
+                        <% if (cardData[i].card_sets == true) { %>
+                            <% console.log(cardData[i].card_sets) %>
+                        <p><i>Yu-Gi-Oh!</br><%=cardData[i].card_sets[0].set_name%></i></p>
+                      
+                        <p><%= cardData[i].card_sets.set_rarity; %></br><span
+                                class="tileEm"><%= cardData[i].name; %></span></p>
+                        <p>Market Price</br><span><%= cardData[i].card_sets.set_price; %></span></p>
                     </div>
                 </div>
                 <% } %>
+                <% } %>
             </li>
-            <% } %>
+           
         </ul>
 
         <!-- Testing API END -->

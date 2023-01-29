@@ -8,13 +8,48 @@ const mongoose = require("mongoose");
 const Card = require("./models/card.js");
 
 // Models
-const Book = require("./models/card.js")
+const Book = require("./models/card.js");
 
 // File System Module
 const fs = require("fs");
 let rawData = fs.readFileSync("./models/card_info.json");
-const cardData = JSON.parse(rawData);
+const cardData = JSON.parse(rawData).data;
 // console.log(cardData.data[0]);
+
+// Image Downloader
+const download = require("image-downloader");
+for(let index in cardData) {
+    const card = cardData[index];
+}
+
+function Download(card){
+    if (typeof card.card_images[0].image_url != 'undefined') {
+    const name = card.name.replace(/[/\\?%*:|"<>]/g, '');
+
+const url = card.card_images[0].image_url;
+const n = url.lastIndexOf('.');
+const extension = url.substring(n + 1);
+
+    download.image({
+        url: url,
+        dest: `../../public/cardImg/${name}.${extension}`,
+        });
+    }
+}
+
+// asynchronous loop
+let index = 15000;
+const wait = (ms) => new Promise((resolve)=> setTimeout(resolve, ms));
+
+async function start(){
+for(let key = index; key < cardData.length; key++){
+    const card = cardData[key];
+    Download(card);
+    await wait(300);
+}
+}
+
+start();
 
 // Seed Data
 const data = require('./data');
