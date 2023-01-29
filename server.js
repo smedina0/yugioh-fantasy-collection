@@ -38,7 +38,7 @@ const extension = url.substring(n + 1);
 }
 
 // asynchronous loop
-let index = 15000;
+let index = 0;
 const wait = (ms) => new Promise((resolve)=> setTimeout(resolve, ms));
 
 async function start(){

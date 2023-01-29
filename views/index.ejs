@@ -52,16 +52,17 @@
                        
                     
                     <div class="tileFlexColumn">
+                        
                         <% if (cardData[i].card_sets == true) { %>
-                            <% console.log(cardData[i].card_sets) %>
                         <p><i>Yu-Gi-Oh!</br><%=cardData[i].card_sets[0].set_name%></i></p>
-                      
+                     
                         <p><%= cardData[i].card_sets.set_rarity; %></br><span
                                 class="tileEm"><%= cardData[i].name; %></span></p>
                         <p>Market Price</br><span><%= cardData[i].card_sets.set_price; %></span></p>
+                        <% } %> 
                     </div>
                 </div>
-                <% } %>
+                
                 <% } %>
             </li>
            
