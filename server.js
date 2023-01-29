@@ -51,12 +51,12 @@ app.use('/public', express.static('public'));
 // Seed Route
 
 app.get('/yugioh/seed', (req, res) => {
-// Card.deleteMany({}, (err, results)=>{
+Card.deleteMany({}, (err, results)=>{
 Card.create(data, (err, results)=>{
 res.redirect('/yugioh');
 });
 });
-// });
+});
 
 // * Mount Routes
 
