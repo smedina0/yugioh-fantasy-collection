@@ -24,7 +24,7 @@ for(let index in cardData) {
 
 function Download(card){
     if (typeof card.card_images[0].image_url != 'undefined') {
-    const name = card.name.replace(/[/\\?%*:|"<>]/g, '');
+    const name = card.id;
 
 const url = card.card_images[0].image_url;
 const n = url.lastIndexOf('.');

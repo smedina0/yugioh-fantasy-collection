@@ -46,14 +46,15 @@
                         
                 <div class="tileRow">
                     <div class="tileColumn">
-                    
+                    <% if (cardData[i].card_images) { %>
+                     <img src="/public/cardImg/<%=cardData[i].id%>.jpg">
+                    <% } %>
                           
                         </div>
                        
                     
                     <div class="tileFlexColumn">
-                        
-                        <% if (cardData[i].card_sets == true) { %>
+                        <% if (cardData[i].card_sets) { %>
                         <p><i>Yu-Gi-Oh!</br><%=cardData[i].card_sets[0].set_name%></i></p>
                      
                         <p><%= cardData[i].card_sets.set_rarity; %></br><span
