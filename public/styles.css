@@ -16,13 +16,17 @@
 }
 
 .pink{
-    color:#eebbc3;
+    background-color:#eebbc3;
+ color:#232946;
     font-family: 'Montserrat', sans-serif;
-    display: flex;
-    flex-direction:row;
-    justify-content: center;
-    align-items: center;
-   
+    width: 100%;
+}
+
+.lightBlue{
+    background-color:#d4d8f0;
+    color:#232946;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
 }
 
 /* Structure */
@@ -39,10 +43,14 @@ nav{
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    border-bottom: 1px solid white;
+    border-bottom: 3px solid white;
     width: 100%;
     padding: 25px;
     font-size: 32px;
+}
+
+.navBottomBlue{
+    border-bottom: 3px solid #232946;
 }
 
 .left{
@@ -115,12 +123,23 @@ a{
     font-family: 'Montserrat', sans-serif;
 }
 
+.lightBlue a{
+    color:#232946;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.pink a{
+    color:#232946;
+    font-family: 'Montserrat', sans-serif;
+}
+
 .headingAndButton{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding:0 20px 0 20px;
     margin-bottom: 20px;
+    margin-right:15px;
 }
 
 .buttonPink{
@@ -128,11 +147,26 @@ border-radius: 4px;
 background:#EEBBC3;
 height:70px;
 margin-top: 30px;
-
 }
 
 a.buttonPink{
     color:#232946;
+    font-weight:700;
+    font-size:26px;
+    padding: 19.2px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.buttonBlue{
+    border-radius: 4px;
+    background:#232946;
+    height:70px;
+    margin-top: 25px;
+}
+
+a.buttonBlue{
+    color:white;
     font-weight:700;
     font-size:26px;
     padding: 19.2px;
@@ -147,4 +181,103 @@ h1.topLeft{
     font-weight: 700;
     font-size: 40px;
    
+}
+
+/* Form Fields */
+
+.formStructure{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 55px;
+}
+
+label{
+    font-size: 32px;
+   
+}
+
+input{
+    width: 574px;
+    height: 52px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 25px;
+}
+.submitButton{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 235px;
+    height: 70px;
+    color:white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px;
+    line-height: 32.69px;
+    font-weight: 700;
+    margin-right: -20px;
+}
+
+.formRow{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+}
+
+.submitRight{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+/** Show Page */
+
+/* Row */
+
+.showRow{
+    display:flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items:center;
+    margin-left: 10px;
+    margin-right:111px;
+    margin-top: 58.5px;
+}
+
+.showRow h1{
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.showRow h2{
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.showRow p{
+    font-size: 24px;
+}
+
+.showImgAndDesc{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left:79px;
+
+}
+
+.showRow img {
+    width:372px;
+    height: 546px;
+}
+
+.priceContainer{
+    border: #232946 solid 2px;
+    width: 439px;
+    height: 326px;
+}
+
+.columnMid{
+    margin-left: 68px;
 }

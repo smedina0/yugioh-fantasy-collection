@@ -14,42 +14,46 @@ const Book = require("./models/card.js");
 const fs = require("fs");
 let rawData = fs.readFileSync("./models/card_info.json");
 const cardData = JSON.parse(rawData).data;
-// console.log(cardData.data[0]);
+// console.log(cardData);
 
-// Image Downloader
-const download = require("image-downloader");
-for(let index in cardData) {
-    const card = cardData[index];
-}
 
-function Download(card){
-    if (typeof card.card_images[0].image_url != 'undefined') {
-    const name = card.id;
 
-const url = card.card_images[0].image_url;
-const n = url.lastIndexOf('.');
-const extension = url.substring(n + 1);
+//* create for each here (create new route - reference)
 
-    download.image({
-        url: url,
-        dest: `../../public/cardImg/${name}.${extension}`,
-        });
-    }
-}
+// // Image Downloader
+// const download = require("image-downloader");
+// for(let index in cardData) {
+//     const card = cardData[index];
+// }
+
+// function Download(card){
+//     if (typeof card.card_images[0].image_url != 'undefined') {
+//     const name = card.id;
+
+// const url = card.card_images[0].image_url;
+// const n = url.lastIndexOf('.');
+// const extension = url.substring(n + 1);
+
+//     download.image({
+//         url: url,
+//         dest: `../../public/cardImg/${name}.${extension}`,
+//         });
+//     }
+// }
 
 // asynchronous loop
-let index = 0;
-const wait = (ms) => new Promise((resolve)=> setTimeout(resolve, ms));
+// let index = 0;
+// const wait = (ms) => new Promise((resolve)=> setTimeout(resolve, ms));
 
-async function start(){
-for(let key = index; key < cardData.length; key++){
-    const card = cardData[key];
-    Download(card);
-    await wait(300);
-}
-}
+// async function start(){
+// for(let key = index; key < cardData.length; key++){
+//     const card = cardData[key];
+//     Download(card);
+//     await wait(300);
+// }
+// }
 
-start();
+// start();
 
 // Seed Data
 const data = require('./data');
@@ -93,6 +97,9 @@ res.redirect('/yugioh');
 });
 });
 
+// Loop through json for each, build a new object with the right fields
+
+
 // * Mount Routes
 
 // Index
@@ -125,6 +132,31 @@ app.post("/yugioh", (req, res) => {
     });
 });
 
+app.get("/yugioh-createCards", (req, res) => {
+    cardData.forEach(function(card) {
+        // console.log(card.card_sets)
+        if (card.card_sets == undefined) { return }
+        if (card.card_sets[0] == undefined) { return }
+        Card.create({
+          name: card.name,
+          boxSet: card.card_sets[0].set_name,
+        cardDescription: card.desc,
+        img: card.id,
+        cardType: card.type,
+        price: card.card_prices[0].tcgplayer_price,
+        attack: card.atk,
+        defense: card.def,
+        race: card.race,
+        archetype: card.archetype,
+        rarity: card.card_sets[0].set_rarity,
+        attribute: card.attribute,
+        level: card.level
+
+        })
+      })
+})
+
+
 // Edit
 
 
@@ -149,5 +181,3 @@ app.get("/yugioh/:id", (req, res) => {
 // * Set Up Listener
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`server is listening on port: ${PORT}`));
-
-// ! Continue from have a create route create data in mongoDB

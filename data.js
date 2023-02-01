@@ -28,7 +28,7 @@ module.exports = [
     boxSet:"OTS Tournament Pack 1 (OPO1)",
     condition:"Near Mint",
     cardDescription:"Must be Special Summoned with \"Mask Change\" and cannot be Special Summoned by other ways. Any card sent to your opponent's Graveyard is banished instead. Once per turn, if your opponent adds a card(s) from their Deck to their hand (except during the Draw Phase or the Damage Step): You can banish 1 random card from your opponent\'s hand.",
-      img:"https://product-images.tcgplayer.com/fit-in/437x437/115955.jpg",
+      img:58481572,
       rarity:"Ultimate Rare",
       cardType:"Dark/Warrior/Fusion/Effect",
       price: 398.99,

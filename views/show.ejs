@@ -4,12 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('./partials/styles') %>
     <title>About <%= card.name %> | Yu-Gi-Oh! Fantasy Collection!</title>
 </head>
-<body>
-    <%- include("./partials/header") %>
+<body class="pink">
+    <%- include("./partials/headerBlueBtn") %>
+    <div class="showRow">
+        <div class="showImgAndDesc">
+            <img src="<%= card.img %> " alt="">
+            <div class="columnMid">
     <h1><%= card.name %> </h1>
     <p><%= card.boxSet %> </p>
-    <p><%= card.attack %> </p>
+    <h2>Product Details</h2>
+    <p><%= card.cardDescription %> </p>
+    <ul>
+        <li><b>Number:</b> <%= card.boxSet %></li>
+        <li><b>Rarity:</b> <%= card.rarity %></li>
+        <li><b>Card Type:</b> <%= card.cardType %></li>
+        <% if(card.attack) {%>
+            <li><b>Attack:</b> <%= card.attack %> </li> 
+            <li><b>Defense:</b> <%= card.defense %> </li> 
+            <% } %> 
+
+    </ul>
+</div>
+</div>
+
+    <div class="priceContainer"> 
+    <h2>Brand New</h2>
+    <p>Near Mint 1st Edition</p>
+    <p><strong><%= card.price %> </strong> free shipping on orders over $50</p>
+    <a class="buttonBlue" href="#">Add to My Cards</a>
+</div>
+</div>
+    
+    <a href="/yugioh">Return to Card Directory</a>
+</div>
 </body>
 </html>
