@@ -68,31 +68,31 @@ router.get('/yugioh/seed', (req, res) => {
 
   
     
-    router.get("/yugioh-createCards", (req, res) => {
-        cardData.forEach(function(card) {
-            // console.log(card.card_sets)
-            if (card.card_sets == undefined) { return }
-            if (card.card_sets[0] == undefined) { return }
-            Card.create({
-              name: card.name,
-              boxSet: card.card_sets[0].set_name,
-            cardDescription: card.desc,
-            img: card.card_images[0].image_url,
-            cardType: card.type,
-            price: card.card_prices[0].tcgplayer_price,
-            attack: card.atk,
-            defense: card.def,
-            race: card.race,
-            archetype: card.archetype,
-            rarity: card.card_sets[0].set_rarity,
-            attribute: card.attribute,
-            level: card.level
+    // router.get("/yugioh-createCards", (req, res) => {
+    //     cardData.forEach(function(card) {
+    //         // console.log(card.card_sets)
+    //         if (card.card_sets == undefined) { return }
+    //         if (card.card_sets[0] == undefined) { return }
+    //         Card.create({
+    //           name: card.name,
+    //           boxSet: card.card_sets[0].set_name,
+    //         cardDescription: card.desc,
+    //         img: card.card_images[0].image_url,
+    //         cardType: card.type,
+    //         price: card.card_prices[0].tcgplayer_price,
+    //         attack: card.atk,
+    //         defense: card.def,
+    //         race: card.race,
+    //         archetype: card.archetype,
+    //         rarity: card.card_sets[0].set_rarity,
+    //         attribute: card.attribute,
+    //         level: card.level
     
-            })
+    //         })
            
-          })
-          res.redirect("/yugioh");
-    })
+    //       })
+    //       res.redirect("/yugioh");
+    // })
     
 
     
