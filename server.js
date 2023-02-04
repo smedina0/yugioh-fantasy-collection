@@ -30,7 +30,7 @@ const cloudinary = require("cloudinary").v2;
 
 //* create for each here (create new route - reference)
 
-// // Image Downloader
+// // // Image Downloader
 // const download = require("image-downloader");
 // for(let index in cardData) {
 //     const card = cardData[index];
@@ -51,7 +51,7 @@ const cloudinary = require("cloudinary").v2;
 //     }
 // }
 
-// asynchronous loop
+// // asynchronous loop
 // let index = 0;
 // const wait = (ms) => new Promise((resolve)=> setTimeout(resolve, ms));
 

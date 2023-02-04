@@ -52,6 +52,7 @@ router.get('/yugioh/seed', (req, res) => {
     router.post("/yugioh", (req, res) => {
         const src = req.files.src;
         src.mv(`./uploads/${src.name}`);
+        
       
      
         cloudinary.uploader.upload(`./uploads/${src.name}`, (err, result) => {
@@ -76,7 +77,7 @@ router.get('/yugioh/seed', (req, res) => {
               name: card.name,
               boxSet: card.card_sets[0].set_name,
             cardDescription: card.desc,
-            img: card.id,
+            img: card.card_images[0].image_url,
             cardType: card.type,
             price: card.card_prices[0].tcgplayer_price,
             attack: card.atk,
