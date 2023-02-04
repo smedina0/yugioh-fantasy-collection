@@ -9,6 +9,8 @@ boxSet: {type: String},
 condition: {type: String},
 cardDescription: {type: String},
 img:{type: String},
+src:{type: String, default: "https://res.cloudinary.com/dajbkbomv/image/upload/v1675488687/Back-ZX-Site_npoboq.webp"
+},
 rarity: {type: String},
 cardType: {type: String},
 price: {type: Number},

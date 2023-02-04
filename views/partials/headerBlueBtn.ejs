@@ -6,8 +6,12 @@
 </div>
 
     <ul>
+        <% if(user) { %>
+        <li><a href="./logout">Logout</a></li>
+        <li><a class="buttonBlue" href="#">My Cards</a></li>
+        <% } else { %> 
         <li><a href="./signup">Sign Up</a></li>
         <li><a href="./login">Log In</a></li>
-        <li><a class="buttonBlue" href="#">My Cards</a></li>
+        <% } %> 
     </ul>
 </nav>

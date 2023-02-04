@@ -278,6 +278,49 @@ flex-wrap: wrap;
     height: 326px;
 }
 
+.priceContainerInside{
+    margin: 24px 16px 15px 15px;
+}
+
 .columnMid{
     margin-left: 68px;
+    width: 783px;
+}
+
+.columnMid ul{
+    font-size: 24px;
+}
+
+.addToMyCards{
+    margin-top:35.2px;
+}
+
+.returnLink{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    text-decoration: underline;
+    margin-left: 70px;
+    margin-top: 50px;
+}
+
+.signLogButton{
+    border-radius: 4px;
+background:#EEBBC3;
+height:70px;
+margin-top: 30px;
+    font-family: 'Montserrat', sans-serif;
+    color:#232946;
+
+
+}
+
+.signLogHeading{
+    margin-left:20px;
+}
+
+.passwordConf{
+    font-size: 30px;
+    margin-left: 30px;
+    font-family: 'Montserrat', sans-serif;
+
 }

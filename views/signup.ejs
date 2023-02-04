@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('./partials/styles') %>
+    <title>Sign Up</title>
+</head>
+<body class="navyBlue">
+    <%- include('./partials/headerPinkBtn') %>
+
+
+    <h1 class="topLeft signLogHeading">Sign Up</h1>
+
+<% if(error){ %>
+    <p class="passwordConf"><%= error %></p>
+<% } %> 
+
+    <div class="formStructure">
+    <form action="/signup" method="POST">
+        <label>
+            Email:
+            <input type="email" name="email" required>
+
+        </label>
+        <label>
+            Password:
+            <input type="password" name="password" required>
+        </label>
+        <label>
+            Password Confirmation:
+            <input type="password" name="passwordConf" required>
+        </label>
+        <input class="submitButton signLogButton" type="submit" value="Sign Up">
+    </form>
+
+</div>
+</body>
+</html>

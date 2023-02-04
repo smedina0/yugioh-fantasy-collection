@@ -14,7 +14,7 @@
         <%- include('./partials/headerPinkBtn') %>
 
         <div class="headingAndButton">
-            <h1 class="topLeft">Featured Cards</h1>
+            <h1 class="topLeft">All Cards</h1>
             <a href="/yugioh/new" class="buttonPink">Create New Card</a>
         </div>
 
@@ -23,14 +23,16 @@
             <li class="tile"><a href="/yugioh/<%= card._id %> ">
                     <div class="tileRow">
                         <div class="tileColumn">
-                            <img src="<%=card.img%>">
-
+                            <% if(card.img){ %> 
+                            <img src="<%="/public/cardImg/"+card.img%>.jpg" alt="">
+                            <% } else { %>
+                                <img src="<%=card.src%>">
+                                    <% } %> 
                         </div>
                         <div class="tileFlexColumn">
                             <p><i>Yu-Gi-Oh!</br><%= card.boxSet; %></i></p>
                             <p><%= card.rarity; %></br><span class="tileEm"><%= card.name; %></span></p>
                             <p>Market Price Placeholder</br><span>Price</span></p>
-                            <p><%= cardData[0].card_sets[0].set_name %> </p>
                         </div>
                     </div>
                 </a></li>

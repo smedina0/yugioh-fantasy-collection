@@ -11,7 +11,7 @@
     <%- include("./partials/headerBlueBtn") %>
     <div class="showRow">
         <div class="showImgAndDesc">
-            <img src="<%= card.img %> " alt="">
+            <img src="/public/cardImg/<%=card.img%>.jpg" alt="">
             <div class="columnMid">
     <h1><%= card.name %> </h1>
     <p><%= card.boxSet %> </p>
@@ -31,14 +31,19 @@
 </div>
 
     <div class="priceContainer"> 
-    <h2>Brand New</h2>
-    <p>Near Mint 1st Edition</p>
-    <p><strong><%= card.price %> </strong> free shipping on orders over $50</p>
+        <div class="priceContainerInside">
+    <h2>Via TCGPlayer</h2>
+    <p>Lightly Played or Near Mint</p>
+    <p><strong>Starting from $<%= card.price %> </strong> <br>Free shipping on orders over $50</p>
+    <div class="addToMyCards">
     <a class="buttonBlue" href="#">Add to My Cards</a>
 </div>
 </div>
-    
+</div>
+</div>
+    <div class="returnLink">
     <a href="/yugioh">Return to Card Directory</a>
+</div>
 </div>
 </body>
 </html>

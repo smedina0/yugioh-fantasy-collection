@@ -15,7 +15,7 @@
     <a class="buttonBlue" href="/yugioh"> View All Cards</a>
 </div>
 <div class="formStructure">
-    <form action="/yugioh" method="POST">
+    <form action="/yugioh" method="POST" enctype="multipart/form-data">
         <div class="formRow">
     <label>
         Card name
@@ -49,6 +49,9 @@
     <label>
         Defense
         <input type="text" name="defense"/>
+    </label>
+    <label>
+        Card Image <input type="file" name="src">
     </label>
     <div class="submitRight">
     <input class="buttonBlue submitButton" type="submit" value="Create Card" />

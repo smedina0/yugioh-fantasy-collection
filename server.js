@@ -7,8 +7,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Card = require("./models/card.js");
 
-// Models
-const Book = require("./models/card.js");
+
+// Router 
+const cardRouter = require("./controllers/cards");
+const userRouter = require("./controllers/users");
 
 // File System Module
 const fs = require("fs");
@@ -16,6 +18,14 @@ let rawData = fs.readFileSync("./models/card_info.json");
 const cardData = JSON.parse(rawData).data;
 // console.log(cardData);
 
+// Express Session
+const session = require("express-session");
+
+// File Upload
+const fileUpload = require("express-fileupload");
+
+// Cloudinary
+const cloudinary = require("cloudinary").v2;
 
 
 //* create for each here (create new route - reference)
@@ -70,6 +80,15 @@ require("dotenv").config();
 mongoose.set('strictQuery', false);
 mongoose.connect(process.env.DATABASE_URL);
 
+
+// Configure Settings
+
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+  });
+
 // Database Connection Error/Success + Define Callback Functions
 const db = mongoose.connection;
 db.on("error", (err) => console.log("an error occurred: " + err.message));
@@ -86,89 +105,45 @@ app.use(express.urlencoded({
 // Middleware to allow CSS and JS
 app.use('/public', express.static('public'));
 
+// Express session
+app.use(session({
+secret: process.env.SECRET,
+resave: false,
+cookie: {maxAge:10000000},
+saveUninitialized: false
 
-// Seed Route
+}));
 
-app.get('/yugioh/seed', (req, res) => {
-Card.deleteMany({}, (err, results)=>{
-Card.create(data, (err, results)=>{
-res.redirect('/yugioh');
-});
-});
-});
-
-// Loop through json for each, build a new object with the right fields
-
-
-// * Mount Routes
-
-// Index
-app.get("/yugioh", (req, res) => {
-    Card.find({}, (error, allCards) => {
-        res.render("index.ejs", {
-            cards: allCards,
-            cardData: cardData,
-        });
-    });
+app.use((req, res, next) =>{
+    if(req.session.userId) {
+        res.locals.user = req.session.userId;
+    } else {
+    res.locals.user = null;
+}
+next();
 });
 
-// New
+// authentication middleware
+function isAuthenticated(req, res, next) {
+    if(!req.session.userId) {
+        return res.redirect("/login");
+    }
+    next();
+}
 
-app.get("/yugioh/new", (req, res) => {
-    res.render("new.ejs");
-});
+// File upload middleware
 
-// Delete
-
-
-// Update
-
-
-// Create
-
-app.post("/yugioh", (req, res) => {
-    Card.create(req.body, (error, createdCard) => {
-        res.redirect("/yugioh");
-    });
-});
-
-app.get("/yugioh-createCards", (req, res) => {
-    cardData.forEach(function(card) {
-        // console.log(card.card_sets)
-        if (card.card_sets == undefined) { return }
-        if (card.card_sets[0] == undefined) { return }
-        Card.create({
-          name: card.name,
-          boxSet: card.card_sets[0].set_name,
-        cardDescription: card.desc,
-        img: card.id,
-        cardType: card.type,
-        price: card.card_prices[0].tcgplayer_price,
-        attack: card.atk,
-        defense: card.def,
-        race: card.race,
-        archetype: card.archetype,
-        rarity: card.card_sets[0].set_rarity,
-        attribute: card.attribute,
-        level: card.level
-
-        })
-      })
-})
+app.use(fileUpload({ createParentPath: true}));
 
 
-// Edit
+// custom middleware to inspect session store - for development
 
+// app.use((req, res, next)=>{
+// console.log(req.session);
+// next();
 
-//Show
+// });
 
-app.get("/yugioh/:id", (req, res) => {
-    Card.findById(req.params.id, (err, foundCard) => {
-        res.render("show.ejs", {
-            card: foundCard,
-        });
-    });
-});
 
 // app.get("/yugioh/:id"(req, res) = {
 //     User.findById(req.params.id, (err, foundUser) => {
@@ -177,6 +152,12 @@ app.get("/yugioh/:id", (req, res) => {
 //         });
 //     });
 // });
+
+
+app.use(userRouter);
+app.use(isAuthenticated, cardRouter);
+
+
 
 // * Set Up Listener
 const PORT = process.env.PORT;
