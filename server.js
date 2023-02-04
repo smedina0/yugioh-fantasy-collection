@@ -109,7 +109,7 @@ app.use('/public', express.static('public'));
 app.use(session({
 secret: process.env.SECRET,
 resave: false,
-cookie: {maxAge:10000000},
+cookie: {maxAge: 1000 * 60 * 60 * 24},
 saveUninitialized: false
 
 }));

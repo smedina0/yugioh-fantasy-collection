@@ -34,11 +34,26 @@ router.get('/yugioh/seed', (req, res) => {
         });
     });
     
+    // - User List Index
+
+    router.get("/yugioh/mycards", (req, res) => {
+        Card.find({}, (error, allCards) => {
+            res.render("userCards/index.ejs", {
+                cards: allCards,
+                cardData: cardData,
+            });
+        });
+
+    });
+
+
     // New
     
     router.get("/yugioh/new", (req, res) => {
         res.render("new.ejs");
     });
+
+
     
     // Delete
     
@@ -66,6 +81,9 @@ router.get('/yugioh/seed', (req, res) => {
         });
     });
 
+    router.post("/yugioh/mycards", (req, res) => {
+        
+    });
   
     
     // router.get("/yugioh-createCards", (req, res) => {

@@ -7,33 +7,42 @@ const fs = require("fs");
 let rawData = fs.readFileSync("./models/card_info.json");
 const cardData = JSON.parse(rawData).data;
 const pagination = require("pagination");
-const paginator = pagination.create('search', {prelink:'/yugioh', current: 1, rowsPerPage: 200, totalResult: 10020});
+const paginator = pagination.create('search', {
+    prelink: '/yugioh',
+    current: 1,
+    rowsPerPage: 200,
+    totalResult: 10020
+});
 
 
 // Index
 router.get("/yugioh", (req, res) => {
-Card.find({}, (error, allCards) => {
+    Card.find({}, (error, allCards) => {
         res.render("index.ejs", {
             cards: allCards,
             cardData: cardData,
         });
     });
-  
+
 });
 
 // Sign up
 
 router.get('/signup', (req, res) => {
-    res.render("signup.ejs", {error: null});
+    res.render("signup.ejs", {
+        error: null
+    });
 });
 
 // Handle form Submission
 
 router.post('/signup', (req, res) => {
     let error = null;
-    if(req.body.password !== req.body.passwordConf){
+    if (req.body.password !== req.body.passwordConf) {
         error = "Password and password confirmation do not match.";
-        return res.render("signup.ejs", { error });
+        return res.render("signup.ejs", {
+            error
+        });
     }
     const hashedPassword = bcrypt.hashSync(req.body.password, 10);
     req.body.password = hashedPassword;
@@ -46,26 +55,32 @@ router.post('/signup', (req, res) => {
 // Login
 
 router.get("/login", (req, res) => {
-    res.render("login.ejs", { error: null });
+    res.render("login.ejs", {
+        error: null
+    });
 });
 
 router.post("/login", (req, res) => {
     // Look up user
-const error = "Incorrect Credentials.";
+    const error = "Incorrect Credentials.";
     User.findOne({
         email: req.body.email
     }, (err, foundUser) => {
         if (!foundUser) {
-            return res.render("login.ejs", { error });
+            return res.render("login.ejs", {
+                error
+            });
         }
 
         const isMatched = bcrypt.compareSync(req.body.password, foundUser.password);
 
         if (!isMatched) {
-            return res.render("login.ejs", { error });
+            return res.render("login.ejs", {
+                error
+            });
         };
         // creates a session for the authenticated user
-req.session.userId = foundUser._id;
+        req.session.userId = foundUser._id;
 
         res.redirect("/yugioh")
     });
@@ -73,10 +88,10 @@ req.session.userId = foundUser._id;
 
 // Logout
 
-router.get("/logout", (req, res)=>{
-req.session.destroy((err)=>{
-    res.redirect("login");
-});
+router.get("/logout", (req, res) => {
+    req.session.destroy((err) => {
+        res.redirect("login");
+    });
 
 });
 

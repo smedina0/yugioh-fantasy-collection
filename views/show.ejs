@@ -11,7 +11,11 @@
     <%- include("./partials/headerBlueBtn") %>
     <div class="showRow">
         <div class="showImgAndDesc">
-            <img src="/public/cardImg/<%=card.img%>.jpg" alt="">
+            <% if(card.img){ %> 
+                <img src="<%=card.img %>" alt="">
+                <% } else { %>
+                    <img src="<%=card.src%>">
+                        <% } %> 
             <div class="columnMid">
     <h1><%= card.name %> </h1>
     <p><%= card.boxSet %> </p>
