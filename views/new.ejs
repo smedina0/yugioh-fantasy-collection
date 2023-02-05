@@ -29,7 +29,7 @@
         Condition
         <input type="text" name="condition" required/>
     </label>
-</div>
+
     <label>
         Card Description
         <input type="text" name="cardDescription" required/>
@@ -43,6 +43,10 @@
         <input type="text" name="cardType"/>
     </label>
     <label>
+        Price:
+        <input type="text" name="price" value="N/A" />
+    </label>
+    <label>
         Attack
         <input type="text" name="attack"/>
     </label>
@@ -51,8 +55,9 @@
         <input type="text" name="defense"/>
     </label>
     <label>
-        Card Image <input type="file" name="src"/>
+        Card Image <input type="file" name="src" required/>
     </label>
+</div>
     <div class="submitRight">
     <input class="buttonBlue submitButton" type="submit" value="Create Card" />
         </div>
