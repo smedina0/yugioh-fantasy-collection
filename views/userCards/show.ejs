@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%- include('./partials/styles') %>
-    <title>About <%= card.name %> | Yu-Gi-Oh! Fantasy Collection!</title>
+    <%- include('../partials/styles') %>
+    <title>My Cards | About <%= card.name %> | Yu-Gi-Oh! Fantasy Collection!</title>
 </head>
 <body class="pink">
-    <%- include("./partials/headerBlueBtn") %>
+    <%- include("../partials/headerBlueBtn") %>
     <div class="showRow">
         <div class="showImgAndDesc">
             <% if(card.img){ %> 
@@ -40,11 +40,8 @@
     <p>Lightly Played or Near Mint</p>
     <p><strong>Starting from $<%= card.price %> </strong> <br>Free shipping on orders over $50</p>
     <div class="addToMyCards">
-        
-        <form action="/yugioh/mycards" method="POST">
-            <input hidden name="cardId" type="text" value="<%=card._id%>">
-            <input hidden name="userId" type="text" value="<%=user%>">
-            <input class="buttonBlue submitButton smallSubmit" type="submit" value="Add to My Cards">
+        <form action="/yugioh/mycards/<%= card.id %>?_method=DELETE" method="POST">
+            <input class="buttonBlue submitButton wideButton" type="submit" value="Remove from My Cards">
         </form>
 </div>
 </div>

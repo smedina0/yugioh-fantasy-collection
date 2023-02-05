@@ -27,6 +27,11 @@ const fileUpload = require("express-fileupload");
 // Cloudinary
 const cloudinary = require("cloudinary").v2;
 
+// Override
+
+const methodOverride = require("method-override");
+
+
 
 //* create for each here (create new route - reference)
 
@@ -153,9 +158,14 @@ app.use(fileUpload({ createParentPath: true}));
 //     });
 // });
 
+// Override Middleware
+
+app.use(methodOverride("_method"));
+
 
 app.use(userRouter);
 app.use(isAuthenticated, cardRouter);
+// app.use(cardRouter);
 
 
 

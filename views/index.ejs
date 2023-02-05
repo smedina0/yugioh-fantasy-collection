@@ -20,6 +20,7 @@
 
         <ul>
             <% cards.forEach(card => { %>
+                
             <li class="tile"><a href="/yugioh/<%= card._id %> ">
                     <div class="tileRow">
                         <div class="tileColumn">
@@ -32,15 +33,18 @@
                         <div class="tileFlexColumn">
                             <p><i>Yu-Gi-Oh!</br><%= card.boxSet; %></i></p>
                             <p><%= card.rarity; %></br><span class="tileEm"><%= card.name; %></span></p>
+                        </a>
                             <p style="font-weight:700;">Market Price as low as: </br><span style="font-size: 25px;"> $<%= card.price %></span></p>
+                       
 
                             <form action="/yugioh/mycards" method="POST">
-                                <input hidden type="text" value="<%=card._id%>">
+                                <input hidden name="cardId" type="text" value="<%=card._id%>">
+                                <input hidden name="userId" type="text" value="<%=user%>">
                                 <input class="buttonBlue submitButton smallSubmit" type="submit" value="Add to My Cards">
                             </form>
                         </div>
                     </div>
-                </a></li>
+                </li>
             <% }); %>
         </ul>
 

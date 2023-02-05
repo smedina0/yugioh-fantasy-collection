@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%- include('./partials/styles') %>
+    <%- include('../partials/styles') %>
     <title>My Card Collection | Yu-Gi-Oh! Fantasy Collection!</title>
 </head>
 
 <body class="navyBlue">
     <div class="flexColumn">
-        <%- include('./partials/headerPinkBtn') %>
+        <%- include('../partials/headerPinkBtn') %>
 
         <div class="headingAndButton">
             <h1 class="topLeft">My Cards</h1>
@@ -19,25 +19,33 @@
         </div>
 
         <ul>
+          
             <% cards.forEach(card => { %>
-            <li class="tile"><a href="/yugioh/<%= card._id %> ">
+            <li class="tile"><a href="/yugioh/mycards/<%= card._id %> ">
                     <div class="tileRow">
                         <div class="tileColumn">
                             <% if(card.img){ %> 
                             <img src="<%=card.img %>" alt="">
                             <% } else { %>
                                 <img src="<%=card.src%>">
+                                   
                                     <% } %> 
                         </div>
                         <div class="tileFlexColumn">
                             <p><i>Yu-Gi-Oh!</br><%= card.boxSet; %></i></p>
                             <p><%= card.rarity; %></br><span class="tileEm"><%= card.name; %></span></p>
+                        </a>
                             <p style="font-weight:700;">Market Price as low as: </br><span style="font-size: 25px;"> $<%= card.price %></span></p>
-
+                            <a class="details" href="/yugioh/mycards/<%= card._id %> ">See Details</a>
+                            <form action="/yugioh/mycards/<%= card.id %>?_method=DELETE" method="POST">
+                                <% console.log(card.id) %> 
+                                <input class="buttonBlue submitButton smallSubmit" type="submit" value="Remove">
+                            </form>
                         </div>
                     </div>
-                </a></li>
+               </li>
             <% }); %>
+           
         </ul>
 
     </div>

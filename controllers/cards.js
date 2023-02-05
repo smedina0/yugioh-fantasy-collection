@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const data = require('../data');
 const Card = require('../models/card');
+const UserCard = require("../models/userCard");
 const fs = require("fs");
 let rawData = fs.readFileSync("./models/card_info.json");
 const cardData = JSON.parse(rawData).data;
@@ -21,28 +22,47 @@ router.get('/yugioh/seed', (req, res) => {
     
     // Loop through json for each, build a new object with the right fields
     
-    
+    var pagination = require('pagination');
+    var paginator = pagination.create('search', {prelink:'/', current: 1, rowsPerPage: 200, totalResult: 10020});
+
     // * Mount Routes
     
     // Index
     router.get("/yugioh", (req, res) => {
-        Card.find({}, (error, allCards) => {
+        // Card.find({}, (error, allCards) => {
+        //     res.render("index.ejs", {
+        //         cards: allCards,
+        //         cardData: cardData,
+        //     });
+        // });
+
+const pageOptions = {
+    page: parseInt(req.query.page, 10) || 0,
+    limit: parseInt(req.query.limit, 10) || 10
+}
+
+        Card.find({}).skip(10).limit(100).exec(function(err, results) {
             res.render("index.ejs", {
-                cards: allCards,
-                cardData: cardData,
-            });
+                        cards: allCards,
+                        cardData: cardData,
+                    });
         });
     });
-    
+
+
+
+
     // - User List Index
 
     router.get("/yugioh/mycards", (req, res) => {
-        Card.find({}, (error, allCards) => {
-            res.render("userCards/index.ejs", {
-                cards: allCards,
-                cardData: cardData,
+        UserCard.find({userId: req.session.userId}, (error, userCards) => {
+            Card.find({_id: userCards.map(userCard => userCard.cardId)}, (error, allCards) => {
+                res.render("userCards/index.ejs", {
+                    cards: allCards,
+                    cardData: cardData
+                });
             });
-        });
+        })
 
     });
 
@@ -57,6 +77,12 @@ router.get('/yugioh/seed', (req, res) => {
     
     // Delete
     
+
+router.delete("/yugioh/mycards/:id", (req, res) => {
+    Card.findByIdAndRemove(req.params.id, (err, data) => {
+        res.redirect("/yugioh/mycards");
+    })
+  })
     
     // Update
     
@@ -81,8 +107,20 @@ router.get('/yugioh/seed', (req, res) => {
         });
     });
 
+    router.post("/yugioh", (req, res) => {
+
+       
+        Card.create(req.body, (error, createdCard) => {
+           
+            res.redirect("/yugioh");
+        });
+    });
+
     router.post("/yugioh/mycards", (req, res) => {
         
+        UserCard.create(req.body, (error, createdCard) => {
+            res.redirect("/yugioh/mycards");
+        });
     });
   
     
@@ -127,5 +165,14 @@ router.get('/yugioh/seed', (req, res) => {
         });
     });
 
+     // - User List Show
+
+     router.get("/yugioh/mycards/:id", (req, res) => {
+        Card.findById(req.params.id, (err, foundCard) => {
+            res.render("userCards/show.ejs", {
+                card: foundCard,
+            });
+        });
+    });
 
 module.exports = router;

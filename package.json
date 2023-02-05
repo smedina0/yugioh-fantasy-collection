@@ -19,6 +19,7 @@
     "express-fileupload": "^1.4.0",
     "express-session": "^1.17.3",
     "image-downloader": "^4.3.0",
+    "method-override": "^3.0.0",
     "mongoose": "^6.9.0",
     "pagination": "^0.4.6"
   }
