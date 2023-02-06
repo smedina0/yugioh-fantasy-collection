@@ -3,6 +3,33 @@
     box-sizing: border-box;
 }
 
+/*- Accessibility  */
+/* Focus Indicator */
+*:focus { 
+	/* ensure high-contrast mode still has an indicator */
+	outline: 2px transparent solid;
+
+	/* Apply a thick yellow box-shadow with 
+	   a thin dark blue indicator in the middle */
+	box-shadow: 0 0 0 2px #F9F9D1, 0 0 0 4px #396196, 0 0 4px 8px #F9F9D1;
+}
+
+.visually-hidden { 
+    /* Contain text within 1px box */
+    height: 1px; 
+    overflow: hidden;
+    width: 1px;
+    /* Keep the layout */  
+    position: absolute;
+    /* Remove any visible trace (e.g. background color) */
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%); /* browsers in the future */
+    /* Prevent the screen reader to skip spaces between words */
+    white-space: nowrap;
+  }
+  
+
 /* General */
 
 /* * Body  */

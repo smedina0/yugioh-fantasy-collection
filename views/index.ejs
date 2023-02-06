@@ -21,13 +21,13 @@
         <ul>
             <% cards.forEach(card => { %>
                 
-            <li class="tile"><a href="/yugioh/<%= card._id %> ">
+            <li class="tile"><a tabindex="-1" href="/yugioh/<%= card._id %> ">
                     <div class="tileRow">
                         <div class="tileColumn">
                             <% if(card.img){ %> 
                             <img src="<%=card.img %>" alt="">
                             <% } else { %>
-                                <img src="<%=card.src%>">
+                                <img src="<%=card.src%>" alt="">
                                     <% } %> 
                         </div>
                         <div class="tileFlexColumn">
@@ -37,7 +37,7 @@
                             <p><%= card.rarity; %></br><span class="tileEm"><%= card.name; %></span></p>
                             <p style="font-weight:700;">Market Price as low as: </br><span style="font-size: 25px;"> $<%= card.price %></span></p>
                             
-                            <a class="details" href="/yugioh/<%= card._id %> ">See Details</a>
+                            <a class="details" href="/yugioh/<%= card._id %> ">See Details <span class="visually-hidden"> about <%= card.name %> </span></a>
 
                             <form action="/yugioh/mycards" method="POST">
                                 <input hidden name="cardId" type="text" value="<%=card._id%>">
