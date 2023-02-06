@@ -5,53 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include('./partials/styles') %>
-    <title>Add a New Card | Yu-Gi-Oh! Fantasy Collection!</title>
+    <title>Edit an Existing Card | Yu-Gi-Oh! Fantasy Collection!</title>
 </head>
 <body class="lightBlue">
     <div class="flexColumn">
     <%- include('./partials/headerBlueBtn') %> 
     <div class="headingAndButton">
-    <h1 class="topLeft">Add New Card</h1>
+    <h1 class="topLeft">Edit <%= card.name %> </h1>
     <a class="buttonBlue" href="/yugioh"> View All Cards</a>
 </div>
 <div class="formStructure">
-    <form action="/yugioh" method="POST">
+    <form action="/yugioh/mycards/<%=card._id%>?_method=PUT" method="POST">
         <div class="formRow">
     <label>
         Card name
-        <input type="text" name="name" required/>
+        <input type="text" name="name" value="<%= card.name %>" required/>
     </label>
     <label>
         Booster Box
-        <input type="text" name="boxSet" required/>
+        <input type="text" name="boxSet" value="<%= card.boxSet %>" required/>
     </label>
     <label>
         Condition
-        <input type="text" name="condition" required/>
+        <input type="text" name="condition" value="<%= card.condition %>" required/>
     </label>
-</div>
+
     <label>
         Card Description
-        <input type="text" name="cardDescription" required/>
+        <input type="text" name="cardDescription" value="<%= card.cardDescription %>" required/>
     </label>
     <label>
         Rarity
-        <input type="text" name="rarity"/>
+        <input type="text" name="rarity" value="<%= card.rarity %> " />
     </label>
+
     <label>
         Attribute/Type:
-        <input type="text" name="cardType"/>
+        <input type="text" name="cardType" value="<%= card.cardType %>" />
+    </label>
+    <label>
+        Price:
+        <input type="text" name="price" value="N/A" value="<%= card.price %>" />
     </label>
     <label>
         Attack
-        <input type="text" name="attack"/>
+        <input type="text" name="attack" value="<%= card.attack %>" />
     </label>
     <label>
         Defense
-        <input type="text" name="defense"/>
+        <input type="text" name="defense" value="<%= card.defense %>" />
     </label>
+</div>
     <div class="submitRight">
-    <input class="buttonBlue submitButton" type="submit" value="Create Card" />
+    <input class="buttonBlue submitButton" type="submit" value="Submit Changes" />
         </div>
     </form>
 </div>
