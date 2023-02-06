@@ -122,20 +122,21 @@ router.post("/yugioh", (req, res) => {
         req.body.src = result.secure_url;
         // console.log(err, result);
         Card.create(req.body, (error, createdCard) => {
+            UserCard.create(req.body, (error, createdCard) => {
             res.redirect("/yugioh");
         });
-
+    });
 
     });
 });
 
-router.post("/yugioh", (req, res) => {
+router.post("/yugioh/mycards", (req, res) => {
 
 
     Card.create(req.body, (error, createdCard) => {
-
         res.redirect("/yugioh");
     });
+
 });
 
 router.post("/yugioh/mycards", (req, res) => {
