@@ -17,7 +17,6 @@ attack: {type: Number},
 defense: {type: Number},
 race: {type: String},
 archetype: {type: String},
-rarity: {type: String},
 attribute: {type: String},
 level: {type: String},
 
