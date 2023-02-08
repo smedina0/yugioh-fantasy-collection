@@ -21,7 +21,7 @@
         <ul>
             <% cards.forEach(card => { %>
                 
-            <li class="tile"><a tabindex="-1" href="/yugioh/<%= card._id %> ">
+            <li class="tile"><a tabindex="-1" href="/yugioh/<%= card._id %> " aria-hidden="true">
                     <div class="tileRow">
                         <div class="tileColumn">
                             <% if(card.img){ %> 

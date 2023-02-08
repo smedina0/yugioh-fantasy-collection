@@ -20,38 +20,22 @@ router.get('/yugioh/seed', (req, res) => {
     });
 });
 
-// Loop through json for each, build a new object with the right fields
-
-var pagination = require('pagination');
-var paginator = pagination.create('search', {
-    prelink: '/',
-    current: 1,
-    rowsPerPage: 200,
-    totalResult: 10020
-});
-
 // * Mount Routes
 
 // Index
 router.get("/yugioh", (req, res) => {
-    // Card.find({}, (error, allCards) => {
-    //     res.render("index.ejs", {
-    //         cards: allCards,
-    //         cardData: cardData,
-    //     });
-    // });
+    const page = req.query.p || 0;
+    const cardsPerPage = 100;
 
-    const pageOptions = {
-        page: parseInt(req.query.page, 10) || 0,
-        limit: parseInt(req.query.limit, 10) || 10
-    }
 
-    Card.find({}).skip(10).limit(100).exec(function (err, results) {
+    Card.find({}, (error, allCards) => {
         res.render("index.ejs", {
             cards: allCards,
             cardData: cardData,
         });
-    });
+    })
+    .skip(page * cardsPerPage)
+    .limit(cardsPerPage)
 });
 
 
