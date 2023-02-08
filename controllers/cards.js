@@ -24,18 +24,12 @@ router.get('/yugioh/seed', (req, res) => {
 
 // Index
 router.get("/yugioh", (req, res) => {
-    const page = req.query.p || 0;
-    const cardsPerPage = 100;
-
-
     Card.find({}, (error, allCards) => {
         res.render("index.ejs", {
             cards: allCards,
             cardData: cardData,
         });
     })
-    .skip(page * cardsPerPage)
-    .limit(cardsPerPage)
 });
 
 
@@ -133,7 +127,7 @@ router.post("/yugioh/mycards", (req, res) => {
 
 // router.get("/yugioh-createCards", (req, res) => {
 //     cardData.forEach(function(card) {
-//         // console.log(card.card_sets)
+//         console.log(card.card_sets)
 //         if (card.card_sets == undefined) { return }
 //         if (card.card_sets[0] == undefined) { return }
 //         Card.create({
