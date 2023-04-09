@@ -10,6 +10,7 @@
 </head>
 
 <body class="navyBlue">
+    
     <div class="flexColumn">
         <%- include('./partials/headerPinkBtn') %>
 
@@ -19,6 +20,15 @@
         </div>
 
         <ul>
+            <nav class="pagi" aria-label="Alphabet navigation">
+                <ul class="pagination">
+                  <% alphabet.forEach(letter => { %>
+                    <li class="page-item <%= (letter === currentLetter) ? 'active' : '' %>">
+                      <a class="page-link" href="/yugioh?letter=<%= letter %>"><%= letter %></a>
+                    </li>
+                  <% }); %>
+                </ul>
+              </nav>
             <% cards.forEach(card => { %>
                 
             <li class="tile"><a tabindex="-1" href="/yugioh/<%= card._id %> " aria-hidden="true">
@@ -30,6 +40,7 @@
                                 <img src="<%=card.src%>" alt="">
                                     <% } %> 
                         </div>
+                        
                         <div class="tileFlexColumn">
                             
                         </a>
@@ -49,6 +60,21 @@
                 </li>
             <% }); %>
         </ul>
+        <!-- Pagination -->
+
+        <nav class="pagi" aria-label="Alphabet navigation">
+            <ul class="pagination">
+              <% alphabet.forEach(letter => { %>
+                <li class="page-item <%= (letter === currentLetter) ? 'active' : '' %>">
+                  <a class="page-link" href="/yugioh?letter=<%= letter %>"><%= letter %></a>
+                </li>
+              <% }); %>
+            </ul>
+          </nav>
+          
+        
+        
+  
 
         <!-- Testing API Start -->
 
