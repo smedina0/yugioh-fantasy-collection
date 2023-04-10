@@ -19,7 +19,7 @@
             <a href="/yugioh/new" class="buttonPink">Create New Card</a>
         </div>
 
-        <ul>
+      
             <nav class="pagi" aria-label="Alphabet navigation">
                 <ul class="pagination">
                   <% alphabet.forEach(letter => { %>
@@ -29,6 +29,9 @@
                   <% }); %>
                 </ul>
               </nav>
+            
+              <div class="tiles-container">
+                <ul>
             <% cards.forEach(card => { %>
                 
             <li class="tile"><a tabindex="-1" href="/yugioh/<%= card._id %> " aria-hidden="true">
@@ -56,10 +59,16 @@
                                 <input class="buttonBlue submitButton smallSubmit" type="submit" value="Add to My Cards">
                             </form>
                         </div>
-                    </div>
+                  
+              
+                </div>
+                 
                 </li>
+
             <% }); %>
+        </div>
         </ul>
+    </div>
         <!-- Pagination -->
 
         <nav class="pagi" aria-label="Alphabet navigation">

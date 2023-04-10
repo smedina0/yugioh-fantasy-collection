@@ -1,17 +1,15 @@
 <nav>
-    <div class="left">
-    <a href="/yugioh">
-        Yu-Gi-Oh! Fantasy <br>Collection!
-    </a>
-</div>
+  <div class="left">
+    <a href="/yugioh"> Yu-Gi-Oh! Fantasy <br />Collection! </a>
+  </div>
 
-    <ul>
-        <% if(user) { %>
-            <li><a href="./logout">Logout</a></li>
-            <li><a class="buttonPink" href="/yugioh/mycards">My Cards</a></li>
-            <% } else { %> 
-        <li><a href="./signup">Sign Up</a></li>
-        <li><a href="./login">Log In</a></li>
-       <% } %> 
-    </ul>
+  <ul>
+    <% if(user) { %>
+    <li><a href="./logout">Logout</a></li>
+    <li><a class="buttonPink" href="/yugioh/mycards">My Cards</a></li>
+    <% } else { %>
+    <li><a href="./signup">Sign Up</a></li>
+    <li><a href="./login">Log In</a></li>
+    <% } %>
+  </ul>
 </nav>

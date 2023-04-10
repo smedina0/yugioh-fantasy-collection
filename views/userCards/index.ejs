@@ -17,9 +17,9 @@
             <h1 class="topLeft">My Cards</h1>
             <a href="/yugioh/new" class="buttonPink">Create New Card</a>
         </div>
-
+        <div class="tiles-container">
         <ul>
-          
+            
             <% cards.forEach(card => { %>
             <li class="tile"><a tabindex="-1" href="/yugioh/mycards/<%= card._id %> " aria-hidden="true">
                     <div class="tileRow">
@@ -48,7 +48,7 @@
             <% }); %>
            
         </ul>
-
+    </div>
     </div>
 </body>
 

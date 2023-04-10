@@ -33,6 +33,38 @@
 
 /* * Body  */
 
+/* Add this to your existing CSS */
+.navbar {
+  background-color: #232946;
+  border-bottom: 3px solid white;
+}
+
+.navbar-brand {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 32px;
+}
+
+.nav-link {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 32px;
+}
+
+.buttonPink {
+  background-color: #eebbc3;
+  color: #232946;
+  font-weight: 700;
+  font-size: 26px;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.buttonPink:hover {
+  color: #232946;
+  text-decoration: none;
+}
+
 /* - Background Colors and Overall Structure */
 .navyBlue {
   background-color: #232946;
@@ -105,6 +137,20 @@ nav ul li {
   margin: 0 21.5px 43px 0px;
   display: inline-block;
   border-radius: 10px;
+}
+
+.tiles-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.tiles-container ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .tile p {
@@ -195,10 +241,14 @@ a.buttonPink {
 a.buttonBlue {
   color: white;
   font-weight: 700;
-  font-size: 26px;
+  font-size: 22px;
   padding: 19.2px;
   text-align: center;
   text-decoration: none;
+}
+
+div.submitRight input.buttonBlue {
+  margin-bottom: 30px;
 }
 
 /* Headings */
@@ -258,6 +308,20 @@ input {
 
 /** Show Page */
 
+.my-flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.my-flex-item {
+  flex: 1;
+  box-sizing: border-box;
+  padding: 15px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
 /* Row */
 
 .showRow {
@@ -268,6 +332,7 @@ input {
   margin-left: 10px;
   margin-right: 111px;
   margin-top: 58.5px;
+  width: 100%;
 }
 
 .showRow h1 {
@@ -399,4 +464,246 @@ nav ul.pagination li a {
 
 .pagi {
   border: none;
+}
+
+@media only screen and (max-width: 708px) {
+  a.buttonBlue {
+    font-size: 20px;
+  }
+}
+
+/* Small screens */
+@media only screen and (max-width: 687px) {
+  a.buttonBlue {
+    font-size: 18px;
+  }
+
+  .left {
+    font-size: 28px;
+  }
+
+  nav ul li a {
+    font-size: 20px;
+  }
+
+  .tile {
+    width: 465px;
+    height: 365px;
+    background-color: white;
+    list-style-type: none;
+    margin: 0 21.5px 43px 0px;
+    display: inline-block;
+    border-radius: 10px;
+  }
+
+  .tile p {
+    color: #232946;
+  }
+
+  .tileRow {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .tileColumn {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tile img {
+    width: 230px;
+    height: 324px;
+    margin: 10px;
+  }
+
+  .tileFlexColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 5px;
+  }
+
+  .tileEm {
+    font-weight: 700;
+  }
+  div.submitRight input.buttonBlue {
+    width: 250px;
+    height: 60px;
+    margin-bottom: 30px;
+  }
+}
+
+/* Extra-small screens */
+@media only screen and (max-width: 621px) {
+  h1.topLeft {
+    font-size: 30px;
+  }
+
+  .left {
+    font-size: 22px;
+  }
+
+  nav ul {
+    padding-left: 5px;
+  }
+
+  nav ul li a {
+    font-size: 20px;
+  }
+
+  a.buttonPink {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .buttonPink {
+    width: 100px;
+    height: 60px;
+  }
+
+  a.buttonBlue {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .buttonBlue {
+    width: 160px;
+    height: 60px;
+  }
+
+  div.submitRight input.buttonBlue {
+    width: 250px;
+    height: 60px;
+    margin-bottom: 30px;
+    margin-right: 10px;
+  }
+
+  .tile {
+    width: 300px;
+    height: auto;
+    background-color: white;
+    list-style-type: none;
+    margin: 0 21.5px 43px 0px;
+    display: inline-block;
+    border-radius: 10px;
+    padding-bottom: 10px;
+  }
+
+  .tile p {
+    color: #232946;
+  }
+
+  .tileRow {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tileColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tile img {
+    width: 230px;
+    height: 324px;
+    margin: 10px;
+  }
+
+  .tileFlexColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5px;
+  }
+
+  .tileEm {
+    font-weight: 700;
+  }
+
+  .tiles-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input {
+    width: 220px;
+  }
+
+  h1.topLeft {
+    font-size: 25px;
+  }
+
+  input[type='file'] {
+    font-size: 14px;
+  }
+
+  .smallSubmit {
+    width: 200px;
+    height: 50px;
+  }
+}
+
+Mobile screens @media only screen and (max-width: 320px) {
+  h1.topLeft {
+    font-size: 24px;
+  }
+
+  .left {
+    font-size: 20px;
+  }
+
+  .tile {
+    width: 180px;
+    height: 365px;
+    background-color: white;
+    list-style-type: none;
+    margin: 0 21.5px 43px 0px;
+    display: inline-block;
+    border-radius: 10px;
+  }
+
+  .tile p {
+    color: #232946;
+  }
+
+  .tileRow {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .tileColumn {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tile img {
+    width: 230px;
+    height: 324px;
+    margin: 10px;
+  }
+
+  .tileFlexColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 5px;
+  }
+
+  .tileEm {
+    font-weight: 700;
+  }
+
+  .smallSubmit {
+    font-size: 18px;
+    padding: 0px;
+    margin-top: 0px;
+    width: 20px;
+    height: 50px;
+  }
 }
