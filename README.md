@@ -13,6 +13,7 @@ This application displays an index of all existing Yu-Gi-Oh! Cards as of Feb 5th
 - Node.js
 - Express
 - MongoDB
+- Bcrypt
 
 ## Screenshot
 
